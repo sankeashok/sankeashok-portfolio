@@ -1,11 +1,12 @@
 title: Ashok Sanke # your name (or website title) here
 logo: "/profile.png?raw=true" # your photo (or logo) here
-description: > # your text below (remove <br> elements if you don't need line breaks)
- Senior Automation Test Engineer
-  <br><br>
-  <a href="mailto:sanke.ashokk@gmail.com">sanke.ashokk@gmail.com </a>
-  <br>
-  <a href="https://www.linkedin.com/in/ashok-sanke/">LinkedIn Profile</a>
-  <br>
-  <a href="https://www.gihub.com/sankeashok/">Gihub</a> 
-theme: jekyll-theme-minimal
+description:
+  > # your text below (remove <br> elements if you don't need line breaks)
+  Senior Automation Test Engineer
+   <br><br>
+   <a href="mailto:sanke.ashokk@gmail.com">sanke.ashokk@gmail.com </a>
+   <br>
+   <a href="https://www.linkedin.com/in/ashok-sanke/">LinkedIn Profile</a>
+   <br>
+   <a href="https://www.gihub.com/sankeashok/">Gihub</a>
+theme: jekyll-theme-cayman
