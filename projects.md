@@ -3,20 +3,21 @@ layout: default
 title: Projects
 ---
 
-# 📂 Projects & Portfolio  
+# 📂 Projects & Portfolio
 
-### 🔹 EDI Validator Automation Framework  
-Python + HTML-based framework for API–EDI validation.  
-✔ Automated field-level matching and reporting.  
+### 🔹 EDI Validator Automation Framework
+- Developed a Python + HTML-based framework to compare **EDI files with API responses**.
+- Automated field-level and value-count matching with detailed reports.
+- Used across Lloyd’s London Markets projects.
 
-### 🔹 Selenium Automation Frameworks  
-Regression automation packs for Flexcube & FIS MBP.  
-✔ Integrated with CI/CD pipelines.  
+### 🔹 Selenium Automation Frameworks
+- Built and maintained **regression automation packs** for Flexcube and FIS MBP.
+- Designed CI/CD-compatible frameworks using **Selenium with Python**.
 
-### 🔹 API Testing Automation  
-Automated REST & SOAP API validations.  
-✔ Supported regulatory workflows.  
+### 🔹 API Testing Automation
+- Created automated **REST & SOAP API test scripts** integrated with Postman, Selenium, and Virtuoso.
+- Validated large-scale **regulatory reporting** workflows.
 
-### 🔹 Murex Regulatory Testing (MXTest)  
-Automated validation for EMIR, ESMA, MAS, ASIC.  
-✔ Ensured ACK/NACK/WACK consistency.  
+### 🔹 Murex Regulatory Testing (MXTest)
+- Automated validation of trades and regulatory submissions (**EMIR, ESMA, MAS, ASIC**).
+- Ensured consistent generation of ACK/NACK/WACK responses.
