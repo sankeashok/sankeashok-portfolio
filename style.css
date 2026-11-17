@@ -7,9 +7,9 @@
     --accent-1: #3b82f6; /* Electric Blue */
     --accent-2: #8b5cf6; /* Vivid Purple */
     
-    --glass-bg: rgba(255, 255, 255, 0.03);
-    --glass-border: rgba(255, 255, 255, 0.08);
-    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    --glass-bg: rgba(255, 255, 255, 0.04);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
     
     --transition-fast: 0.2s ease;
     --transition-norm: 0.4s ease;
@@ -93,8 +93,8 @@ p { font-size: 1.1rem; line-height: 1.7; color: var(--text-secondary); margin-bo
 /* Glassmorphism */
 .glass-panel {
     background: var(--glass-bg);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border: 1px solid var(--glass-border);
     border-radius: 24px;
     box-shadow: var(--glass-shadow);
@@ -621,22 +621,24 @@ footer {
     
     .nav-links {
         position: fixed;
-        bottom: 0;
-        top: auto;
-        left: 0;
-        width: 100%;
+        bottom: 25px; /* Floating above the bottom */
+        left: 50%;
+        transform: translateX(-50%);
+        width: 92%;
+        max-width: 420px;
         height: 70px;
-        background: rgba(15, 17, 21, 0.98);
-        backdrop-filter: blur(20px);
+        background: rgba(25, 25, 30, 0.75); /* Darker, glassy background */
+        backdrop-filter: blur(25px);
+        -webkit-backdrop-filter: blur(25px);
         flex-direction: row;
         justify-content: space-around;
         align-items: center;
         padding: 0 0.5rem;
-        padding-bottom: env(safe-area-inset-bottom); /* iOS support */
         margin: 0;
         gap: 0;
-        border-top: 1px solid var(--glass-border);
-        border-bottom: none;
+        border: 1px solid rgba(255, 255, 255, 0.08); /* Subtle inner border */
+        border-radius: 40px; /* Pill shape */
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05);
         clip-path: none;
         z-index: 1000;
     }
@@ -646,12 +648,33 @@ footer {
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        font-size: 0.65rem;
+        font-size: 0.6rem; /* Slightly smaller font to fit 6 items */
         color: var(--text-secondary);
         gap: 4px;
-        min-height: 100%;
-        width: 100%;
-        padding: 0.5rem 0;
+        min-height: 56px;
+        flex: 1; /* Take up equal space */
+        margin: 0;
+        padding: 0.3rem 0;
+        border-radius: 16px;
+        transition: all 0.3s ease;
+        position: relative;
+    }
+
+    .nav-links a.active {
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--text-primary);
+    }
+    
+    .nav-links a.active::before {
+        content: '';
+        position: absolute;
+        top: 8px;
+        right: 20px;
+        width: 6px;
+        height: 6px;
+        background-color: #2d89ef; /* Blue indicator dot */
+        border-radius: 50%;
+        box-shadow: 0 0 6px #2d89ef;
     }
 
     .nav-links a svg {
@@ -661,7 +684,7 @@ footer {
         stroke: currentColor;
     }
     
-    .nav-links a:hover, .nav-links a:active {
+    .nav-links a:hover {
         color: var(--accent-1);
     }
     
@@ -784,3 +807,11 @@ footer {
     }
     h1 { font-size: 1.8rem; }
 }
+
+/* Unique Project Typography */
+.project-aegis h3 { font-family: 'Space Grotesk', sans-serif; font-weight: 600; }
+.project-lifebridge h3 { font-family: 'Syne', sans-serif; font-weight: 700; }
+.project-vital h3 { font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: 1px; }
+.project-anomaly h3 { font-family: 'Fira Code', monospace; font-size: 1.1rem; }
+.project-helios h3 { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 600; }
+.project-scaler h3 { font-family: 'Caveat', cursive; font-size: 1.8rem; line-height: 1; }
