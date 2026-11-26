@@ -1,0 +1,13 @@
+# Python scratch scripts
+*.py
+__pycache__/
+
+# Versioned draft files & design variants
+*_v[0-9].*
+*_v[0-9][0-9].*
+
+# System & IDE artifacts
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

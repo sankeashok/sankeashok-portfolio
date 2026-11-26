@@ -7,9 +7,9 @@
     --accent-1: #3b82f6; /* Electric Blue */
     --accent-2: #8b5cf6; /* Vivid Purple */
     
-    --glass-bg: rgba(255, 255, 255, 0.03);
-    --glass-border: rgba(255, 255, 255, 0.08);
-    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    --glass-bg: rgba(255, 255, 255, 0.04);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
     
     --transition-fast: 0.2s ease;
     --transition-norm: 0.4s ease;
@@ -93,8 +93,8 @@ p { font-size: 1.1rem; line-height: 1.7; color: var(--text-secondary); margin-bo
 /* Glassmorphism */
 .glass-panel {
     background: var(--glass-bg);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border: 1px solid var(--glass-border);
     border-radius: 24px;
     box-shadow: var(--glass-shadow);
@@ -462,13 +462,7 @@ p { font-size: 1.1rem; line-height: 1.7; color: var(--text-secondary); margin-bo
 
 /* Contact Section */
 .contact-section {
-    padding: 4rem 5% 8rem;
-}
-
-.contact-glass {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 4rem 2rem;
+    padding: 2rem 5% 3.5rem;
 }
 
 /* Footer */
@@ -621,22 +615,24 @@ footer {
     
     .nav-links {
         position: fixed;
-        bottom: 0;
-        top: auto;
-        left: 0;
-        width: 100%;
+        bottom: 25px; /* Floating above the bottom */
+        left: 50%;
+        transform: translateX(-50%);
+        width: 92%;
+        max-width: 420px;
         height: 70px;
-        background: rgba(15, 17, 21, 0.98);
-        backdrop-filter: blur(20px);
+        background: rgba(25, 25, 30, 0.75); /* Darker, glassy background */
+        backdrop-filter: blur(25px);
+        -webkit-backdrop-filter: blur(25px);
         flex-direction: row;
         justify-content: space-around;
         align-items: center;
         padding: 0 0.5rem;
-        padding-bottom: env(safe-area-inset-bottom); /* iOS support */
         margin: 0;
         gap: 0;
-        border-top: 1px solid var(--glass-border);
-        border-bottom: none;
+        border: 1px solid rgba(255, 255, 255, 0.08); /* Subtle inner border */
+        border-radius: 40px; /* Pill shape */
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05);
         clip-path: none;
         z-index: 1000;
     }
@@ -646,12 +642,33 @@ footer {
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        font-size: 0.65rem;
+        font-size: 0.6rem; /* Slightly smaller font to fit 6 items */
         color: var(--text-secondary);
         gap: 4px;
-        min-height: 100%;
-        width: 100%;
-        padding: 0.5rem 0;
+        min-height: 56px;
+        flex: 1; /* Take up equal space */
+        margin: 0;
+        padding: 0.3rem 0;
+        border-radius: 16px;
+        transition: all 0.3s ease;
+        position: relative;
+    }
+
+    .nav-links a.active {
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--text-primary);
+    }
+    
+    .nav-links a.active::before {
+        content: '';
+        position: absolute;
+        top: 8px;
+        right: 20px;
+        width: 6px;
+        height: 6px;
+        background-color: #2d89ef; /* Blue indicator dot */
+        border-radius: 50%;
+        box-shadow: 0 0 6px #2d89ef;
     }
 
     .nav-links a svg {
@@ -661,7 +678,7 @@ footer {
         stroke: currentColor;
     }
     
-    .nav-links a:hover, .nav-links a:active {
+    .nav-links a:hover {
         color: var(--accent-1);
     }
     
@@ -783,4 +800,320 @@ footer {
         height: 200px;
     }
     h1 { font-size: 1.8rem; }
+}
+
+/* Unique Project Typography */
+.project-aegis h3 { font-family: 'Space Grotesk', sans-serif; font-weight: 600; }
+.project-lifebridge h3 { font-family: 'Syne', sans-serif; font-weight: 700; }
+.project-vital h3 { font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: 1px; }
+.project-anomaly h3 { font-family: 'Fira Code', monospace; font-size: 1.1rem; }
+.project-helios h3 { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 600; }
+.project-scaler h3 { font-family: 'Caveat', cursive; font-size: 1.8rem; line-height: 1; }
+
+
+/* ==========================================================================
+   Bento Grid Foundation & Mobile-First Responsive Styles
+   ========================================================================== */
+#skills {
+    scroll-margin-top: 100px;
+}
+
+.about-bento {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.stat-counters-bento {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 18px;
+    background: linear-gradient(145deg, rgba(59, 130, 246, 0.08), rgba(22, 27, 34, 0.7));
+    border-radius: 20px;
+}
+
+.bento-stat-item {
+    text-align: center;
+    padding: 6px 10px;
+}
+
+.bento-stat-val {
+    font-size: 28px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #60a5fa, #c084fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.1;
+    margin-bottom: 4px;
+}
+
+.bento-stat-desc {
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.experience-bento {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.career-trajectory-card {
+    padding: 22px 18px;
+    border-radius: 24px;
+}
+
+.experience-side-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.side-stack-tile {
+    padding: 22px 20px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 22px;
+    backdrop-filter: blur(20px);
+    box-shadow: var(--glass-shadow);
+    transition: all 0.3s ease;
+}
+
+.side-stack-tile:hover {
+    border-color: rgba(59, 130, 246, 0.35);
+    transform: translateY(-2px);
+}
+
+.career-role-item {
+    padding: 16px 18px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--glass-border);
+    margin-bottom: 12px;
+    transition: all 0.25s ease;
+}
+
+.career-role-item:last-child {
+    margin-bottom: 0;
+}
+
+.career-role-item:hover {
+    background: rgba(59, 130, 246, 0.06);
+    border-color: rgba(59, 130, 246, 0.3);
+    transform: translateX(4px);
+}
+
+.career-role-item.highlighted {
+    background: rgba(59, 130, 246, 0.09);
+    border-color: rgba(59, 130, 246, 0.35);
+}
+
+.role-top-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.role-title-text {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.role-company-text {
+    font-size: 13.5px;
+    color: var(--accent-1);
+    font-weight: 600;
+}
+
+.role-date-badge {
+    font-size: 11px;
+    font-weight: 600;
+    color: #93c5fd;
+    background: rgba(59, 130, 246, 0.12);
+    padding: 3px 10px;
+    border-radius: 20px;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    white-space: nowrap;
+}
+
+.role-desc-text {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin: 6px 0 10px;
+    line-height: 1.5;
+}
+
+.role-tags-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.role-tag-chip {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    color: #cbd5e1;
+}
+
+/* ==========================================================================
+   Desktop Bento Grid Architecture (min-width: 992px)
+   ========================================================================== */
+@media screen and (min-width: 992px) {
+    /* About Bento: 8 cols + 4 cols */
+    .about-bento {
+        display: grid;
+        grid-template-columns: 8fr 4fr;
+        gap: 24px;
+        align-items: stretch;
+    }
+
+    .stat-counters-bento {
+        flex-direction: column;
+        justify-content: space-around;
+        padding: 24px 28px;
+    }
+
+    .bento-stat-val {
+        font-size: 38px;
+    }
+
+    /* Experience Bento: 8 cols + 4 cols */
+    .experience-bento {
+        display: grid;
+        grid-template-columns: 8fr 4fr;
+        gap: 24px;
+        align-items: stretch;
+    }
+
+    .career-trajectory-card {
+        padding: 30px;
+    }
+
+    .experience-side-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        justify-content: space-between;
+    }
+
+    .side-stack-tile {
+        padding: 26px 28px;
+    }
+
+    /* Education Ribbon: 3 in a row on desktop */
+    .education-ribbon {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+    }
+
+    /* Projects Grid: 3 in a row on desktop */
+    .project-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+    }
+}
+
+/* ==========================================================================
+   Social & Connect Hub (Resized & Streamlined Card)
+   ========================================================================== */
+.contact-glass {
+    max-width: 440px;
+    margin: 0 auto;
+    padding: 2rem 1.75rem 1.75rem;
+    border-radius: 22px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(20px);
+    box-shadow: var(--glass-shadow);
+}
+
+.contact-card-title {
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.35rem;
+    line-height: 1.2;
+}
+
+.contact-card-desc {
+    color: var(--text-secondary);
+    font-size: 0.88rem;
+    line-height: 1.5;
+    margin: 0 auto 1.25rem;
+    max-width: 380px;
+}
+
+.contact-action-btn {
+    margin-bottom: 1.25rem;
+}
+
+.btn-contact-email {
+    padding: 0.55rem 1.75rem;
+    font-size: 0.92rem;
+    border-radius: 25px;
+    display: inline-block;
+}
+
+.connect-social-icons {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.15rem;
+    padding: 7px 18px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    backdrop-filter: blur(12px);
+    transition: all 0.3s ease;
+}
+
+.connect-social-icons:hover {
+    border-color: rgba(59, 130, 246, 0.35);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.connect-social-icons a {
+    color: var(--text-secondary);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s ease;
+}
+
+.connect-social-icons a:hover {
+    transform: translateY(-2px);
+}
+
+.connect-social-icons a[aria-label="GitHub"]:hover { color: #fff; }
+.connect-social-icons a[aria-label="LinkedIn"]:hover { color: #38bdf8; }
+.connect-social-icons a[aria-label="YouTube"]:hover { color: #ef4444; }
+.connect-social-icons a[aria-label="X (Twitter)"]:hover { color: #fff; }
+.connect-social-icons a[aria-label="Email"]:hover { color: #a78bfa; }
+
+@media (max-width: 640px) {
+    .contact-section {
+        padding: 1.5rem 1rem 2.5rem;
+    }
+    .contact-glass {
+        padding: 1.6rem 1.25rem 1.4rem;
+        max-width: 100%;
+    }
+    .connect-social-icons {
+        gap: 0.95rem;
+        padding: 6px 14px;
+    }
 }
