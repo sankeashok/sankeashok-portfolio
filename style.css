@@ -815,3 +815,220 @@ footer {
 .project-anomaly h3 { font-family: 'Fira Code', monospace; font-size: 1.1rem; }
 .project-helios h3 { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 600; }
 .project-scaler h3 { font-family: 'Caveat', cursive; font-size: 1.8rem; line-height: 1; }
+
+
+/* ==========================================================================
+   Bento Grid Foundation & Mobile-First Responsive Styles
+   ========================================================================== */
+#skills {
+    scroll-margin-top: 100px;
+}
+
+.about-bento {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.stat-counters-bento {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 18px;
+    background: linear-gradient(145deg, rgba(59, 130, 246, 0.08), rgba(22, 27, 34, 0.7));
+    border-radius: 20px;
+}
+
+.bento-stat-item {
+    text-align: center;
+    padding: 6px 10px;
+}
+
+.bento-stat-val {
+    font-size: 28px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #60a5fa, #c084fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.1;
+    margin-bottom: 4px;
+}
+
+.bento-stat-desc {
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.experience-bento {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.career-trajectory-card {
+    padding: 22px 18px;
+    border-radius: 24px;
+}
+
+.experience-side-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.side-stack-tile {
+    padding: 22px 20px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 22px;
+    backdrop-filter: blur(20px);
+    box-shadow: var(--glass-shadow);
+    transition: all 0.3s ease;
+}
+
+.side-stack-tile:hover {
+    border-color: rgba(59, 130, 246, 0.35);
+    transform: translateY(-2px);
+}
+
+.career-role-item {
+    padding: 16px 18px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--glass-border);
+    margin-bottom: 12px;
+    transition: all 0.25s ease;
+}
+
+.career-role-item:last-child {
+    margin-bottom: 0;
+}
+
+.career-role-item:hover {
+    background: rgba(59, 130, 246, 0.06);
+    border-color: rgba(59, 130, 246, 0.3);
+    transform: translateX(4px);
+}
+
+.career-role-item.highlighted {
+    background: rgba(59, 130, 246, 0.09);
+    border-color: rgba(59, 130, 246, 0.35);
+}
+
+.role-top-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.role-title-text {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.role-company-text {
+    font-size: 13.5px;
+    color: var(--accent-1);
+    font-weight: 600;
+}
+
+.role-date-badge {
+    font-size: 11px;
+    font-weight: 600;
+    color: #93c5fd;
+    background: rgba(59, 130, 246, 0.12);
+    padding: 3px 10px;
+    border-radius: 20px;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    white-space: nowrap;
+}
+
+.role-desc-text {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin: 6px 0 10px;
+    line-height: 1.5;
+}
+
+.role-tags-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.role-tag-chip {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    color: #cbd5e1;
+}
+
+/* ==========================================================================
+   Desktop Bento Grid Architecture (min-width: 992px)
+   ========================================================================== */
+@media screen and (min-width: 992px) {
+    /* About Bento: 8 cols + 4 cols */
+    .about-bento {
+        display: grid;
+        grid-template-columns: 8fr 4fr;
+        gap: 24px;
+        align-items: stretch;
+    }
+
+    .stat-counters-bento {
+        flex-direction: column;
+        justify-content: space-around;
+        padding: 24px 28px;
+    }
+
+    .bento-stat-val {
+        font-size: 38px;
+    }
+
+    /* Experience Bento: 8 cols + 4 cols */
+    .experience-bento {
+        display: grid;
+        grid-template-columns: 8fr 4fr;
+        gap: 24px;
+        align-items: stretch;
+    }
+
+    .career-trajectory-card {
+        padding: 30px;
+    }
+
+    .experience-side-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        justify-content: space-between;
+    }
+
+    .side-stack-tile {
+        padding: 26px 28px;
+    }
+
+    /* Education Ribbon: 3 in a row on desktop */
+    .education-ribbon {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+    }
+
+    /* Projects Grid: 3 in a row on desktop */
+    .project-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+    }
+}
