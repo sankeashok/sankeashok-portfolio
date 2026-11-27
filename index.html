@@ -127,6 +127,7 @@
                         <span style="font-size: 13px; font-weight: 700; color: var(--accent-1); text-transform: uppercase; letter-spacing: 1px;">Career Trajectory (10+ Years)</span>
                         <span style="font-size: 12px; color: var(--text-secondary);">Chronological Timeline</span>
                     </div>
+                    <div id="career-trajectory-list">
 
                     <!-- Role 1: Fractal.ai -->
                     <div class="career-role-item highlighted">
@@ -229,7 +230,8 @@
                             <span class="role-tag-chip">Banking Workflows</span>
                         </div>
                     </div>
-                </div>
+                    </div> <!-- End #career-trajectory-list -->
+                </div> <!-- End .career-trajectory-card -->
 
                 <!-- Right (4 cols): Side Stack (Core Disciplines + Verified Certifications) -->
                 <div class="experience-side-stack">
@@ -265,7 +267,14 @@
                     <div class="side-stack-tile">
                         <span style="font-size: 11px; font-weight: 700; color: var(--accent-2); text-transform: uppercase; letter-spacing: 1px;">Verified Credentials</span>
                         <h4 style="font-size: 18px; font-weight: 700; margin: 4px 0 12px; color: #fff;">Certifications &amp; Honors</h4>
-                        <div style="display: flex; flex-direction: column; gap: 10px; font-size: 13px;">
+                        <div id="bento-credentials-list" style="display: flex; flex-direction: column; gap: 10px; font-size: 13px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--glass-border); padding-bottom: 8px;">
+                                <div>
+                                    <div style="font-weight: 600; color: #fff;">Google AI Professional Certificate</div>
+                                    <div style="font-size: 11px; color: var(--text-secondary);">Coursera Specialization</div>
+                                </div>
+                                <a href="https://www.coursera.org/account/accomplishments/specialization/FQ5BNNSBCOG5" target="_blank" rel="noopener noreferrer" style="font-size: 11px; color: var(--accent-1); text-decoration: none; font-weight: 600;">[Verify]</a>
+                            </div>
                             <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--glass-border); padding-bottom: 8px;">
                                 <div>
                                     <div style="font-weight: 600; color: #fff;">Data Engineering to Lakehouse</div>
@@ -321,7 +330,7 @@
         <!-- Projects Section -->
         <section id="projects" class="projects-section container reveal">
             <h2 class="section-title">Projects & Portfolio</h2>
-            <div class="project-grid">
+            <div class="project-grid" id="projects-grid">
                 <!-- Project 1 -->
                 <div class="project-card glass-panel interactive project-aegis">
                     <h3 style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;"><span class="project-icon" style="margin-bottom: 0; font-size: 1.75rem;">🛡️</span> Project Aegis-Finance</h3>
@@ -415,14 +424,15 @@
             <div class="about-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
                 <div class="glass-panel p-lg interactive">
                     <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem; color: var(--text-primary);">🏆 Awards</h3>
-                    <ul class="job-details">
+                    <ul class="job-details" id="achievements-awards-list">
                         <li><strong>Ever Ready Award</strong> – Oracle (2020)</li>
                         <li><strong>Sustainability Champion</strong> – Oracle Green Warrior</li>
                     </ul>
                 </div>
                 <div class="glass-panel p-lg interactive">
                     <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem; color: var(--text-primary);">📜 Certifications</h3>
-                    <ul class="job-details">
+                    <ul class="job-details" id="achievements-cert-list">
+                        <li><strong>Google AI Professional Certificate</strong> – Coursera Specialization <a href="https://www.coursera.org/account/accomplishments/specialization/FQ5BNNSBCOG5" target="_blank" rel="noopener noreferrer" style="color: var(--accent-1); text-decoration: none; font-size: 0.85em;">[Verify]</a></li>
                         <li><strong>AI Fundamentals</strong> – Coursera <a href="https://www.coursera.org/account/accomplishments/verify/2HABAXUB5T6G" target="_blank" rel="noopener noreferrer" style="color: var(--accent-1); text-decoration: none; font-size: 0.85em;">[Verify]</a></li>
                         <li><strong>Data Engineering to Lakehouse</strong> – Coursera <a href="https://www.coursera.org/account/accomplishments/certificate/4DARW88WC2AJ" target="_blank" rel="noopener noreferrer" style="color: var(--accent-1); text-decoration: none; font-size: 0.85em;">[Verify]</a></li>
                     </ul>
@@ -489,6 +499,20 @@
             </div>
             <p style="display: flex; align-items: center; justify-content: center; gap: 6px; margin: 0; font-size: 0.95rem; flex-wrap: wrap;">
                 <span>&copy; <span id="year"></span> Ashok Sanke. All rights reserved.</span>
+                <span style="opacity: 0.3; user-select: none;">&bull;</span>
+                <a 
+                    href="admin/" 
+                    title="Admin Portal" 
+                    aria-label="Admin Portal" 
+                    style="display: inline-flex; align-items: center; justify-content: center; color: inherit; opacity: 0.35; padding: 4px; text-decoration: none; border-radius: 4px; transition: all 0.2s ease;" 
+                    onmouseover="this.style.opacity='0.95'; this.style.color='#3b82f6';" 
+                    onmouseout="this.style.opacity='0.35'; this.style.color='inherit';"
+                >
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                    </svg>
+                </a>
                 <span style="opacity: 0.3; user-select: none;">&bull;</span>
                 <a 
                     href="https://job-hunter-ai.vercel.app/" 
