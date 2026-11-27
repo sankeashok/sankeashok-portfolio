@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Admin Portal | Ashok Sanke</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0d14;
+            --panel-bg: rgba(22, 27, 34, 0.85);
+            --panel-border: rgba(255, 255, 255, 0.1);
+            --accent-blue: #3b82f6;
+            --accent-purple: #8b5cf6;
+            --accent-green: #10b981;
+            --accent-red: #ef4444;
+            --text-main: #f8fafc;
+            --text-sub: #94a3b8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            background: var(--bg-dark) radial-gradient(circle at 10% 10%, rgba(59, 130, 246, 0.12), transparent 40%);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-main);
+            line-height: 1.5;
+            padding: 2rem 1.25rem;
+        }
+
+        .admin-layout {
+            max-width: 1050px;
+            margin: 0 auto;
+        }
+
+        /* Top Header */
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--panel-border);
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .admin-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .admin-logo-badge {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: #fff;
+        }
+
+        .admin-title h1 {
+            font-size: 1.35rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .admin-title p {
+            font-size: 0.82rem;
+            color: var(--text-sub);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-view-site {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--panel-border);
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .btn-view-site:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .auth-status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 20px;
+            background: rgba(16, 185, 129, 0.12);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: #34d399;
+        }
+
+        .auth-status-pill.unconfigured {
+            background: rgba(239, 68, 68, 0.12);
+            border-color: rgba(239, 68, 68, 0.3);
+            color: #f87171;
+        }
+
+        /* Navigation Tabs */
+        .admin-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--panel-border);
+            padding-bottom: 10px;
+            overflow-x: auto;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-sub);
+            padding: 8px 18px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .tab-btn:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .tab-btn.active {
+            color: #fff;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(139, 92, 246, 0.25));
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+
+        /* Content Panels */
+        .admin-panel {
+            display: none;
+        }
+
+        .admin-panel.active {
+            display: block;
+        }
+
+        .panel-grid {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 24px;
+            align-items: start;
+        }
+
+        @media (max-width: 860px) {
+            .panel-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Card list */
+        .glass-box {
+            background: var(--panel-bg);
+            border: 1px solid var(--panel-border);
+            border-radius: 20px;
+            padding: 1.75rem;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .box-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--panel-border);
+        }
+
+        .box-header h2 {
+            font-size: 1.15rem;
+            font-weight: 700;
+        }
+
+        .items-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .item-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+            transition: all 0.2s ease;
+        }
+
+        .item-row:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+
+        .item-info {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            min-width: 0;
+            padding-right: 12px;
+        }
+
+        .item-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #fff;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .item-meta {
+            font-size: 0.8rem;
+            color: var(--text-sub);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .item-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+
+        .btn-icon-action {
+            background: transparent;
+            border: 1px solid var(--panel-border);
+            color: var(--text-sub);
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-icon-action:hover {
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .btn-icon-action.delete:hover {
+            color: var(--accent-red);
+            border-color: var(--accent-red);
+            background: rgba(239, 68, 68, 0.1);
+        }
+
+        /* Forms */
+        .form-group {
+            margin-bottom: 1.1rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #cbd5e1;
+            margin-bottom: 6px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px 14px;
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px solid var(--panel-border);
+            color: #fff;
+            font-family: inherit;
+            font-size: 0.88rem;
+            transition: all 0.2s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 12px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            color: #fff;
+            border: none;
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.45);
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Toast notifications */
+        .toast-banner {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            padding: 14px 20px;
+            border-radius: 12px;
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 9999;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .toast-banner.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .toast-banner.success {
+            border-color: rgba(16, 185, 129, 0.4);
+            color: #34d399;
+        }
+
+        .toast-banner.error {
+            border-color: rgba(239, 68, 68, 0.4);
+            color: #f87171;
+        }
+
+        /* Token Modal */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            z-index: 1000;
+        }
+
+        .modal-card {
+            width: 100%;
+            max-width: 500px;
+            background: var(--panel-bg);
+            border: 1px solid var(--panel-border);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-layout">
+        <!-- Header -->
+        <header class="admin-header">
+            <div class="admin-brand">
+                <div class="admin-logo-badge">AS</div>
+                <div class="admin-title">
+                    <h1>Portfolio Admin Portal</h1>
+                    <p>Live Content Management System · sankeashok.github.io</p>
+                </div>
+            </div>
+            <div class="header-actions">
+                <div id="authStatusPill" class="auth-status-pill unconfigured">
+                    <span id="authDot">●</span> <span id="authStatusText">Token Required</span>
+                </div>
+                <button id="btnOpenSettings" class="btn-icon-action" title="Settings / GitHub Token">⚙️</button>
+                <a href="../" target="_blank" class="btn-view-site">View Site ↗</a>
+            </div>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="admin-tabs">
+            <button class="tab-btn active" data-tab="tab-certs">📜 Certifications &amp; Honors</button>
+            <button class="tab-btn" data-tab="tab-projects">🚀 Projects &amp; Demos</button>
+            <button class="tab-btn" data-tab="tab-experience">💼 Career Experience</button>
+            <button class="tab-btn" data-tab="tab-settings">⚙️ GitHub Sync</button>
+        </nav>
+
+        <!-- Tab 1: Certifications & Honors -->
+        <section id="tab-certs" class="admin-panel active">
+            <div class="panel-grid">
+                <!-- Left: List -->
+                <div class="glass-box">
+                    <div class="box-header">
+                        <h2>Published Certifications (<span id="certsCount">0</span>)</h2>
+                        <span style="font-size: 0.8rem; color: var(--text-sub);">data/certifications.json</span>
+                    </div>
+                    <div id="certsList" class="items-list">
+                        <div style="text-align: center; color: var(--text-sub); padding: 2rem;">Loading credentials...</div>
+                    </div>
+                </div>
+
+                <!-- Right: Form -->
+                <div class="glass-box">
+                    <div class="box-header">
+                        <h2 id="certsFormTitle">Add New Credential</h2>
+                    </div>
+                    <form id="certsForm">
+                        <input type="hidden" id="certEditId">
+                        <div class="form-group">
+                            <label for="certTitle">Title *</label>
+                            <input type="text" id="certTitle" class="form-control" placeholder="e.g. Google AI Professional Certificate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="certIssuer">Issuer / Organization *</label>
+                            <input type="text" id="certIssuer" class="form-control" placeholder="e.g. Coursera Specialization" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="certUrl">Verification Link</label>
+                            <input type="url" id="certUrl" class="form-control" placeholder="https://coursera.org/verify/...">
+                        </div>
+                        <div class="form-group">
+                            <label for="certCategory">Category</label>
+                            <select id="certCategory" class="form-control">
+                                <option value="certification">Certification</option>
+                                <option value="award">Award / Honor</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="certBadge">Badge Label</label>
+                            <input type="text" id="certBadge" class="form-control" placeholder="e.g. Specialization, Verified, Honors">
+                        </div>
+                        <div style="display: flex; gap: 10px;">
+                            <button type="submit" id="btnSaveCert" class="btn-submit" style="flex: 1;">
+                                <span>Publish to GitHub</span>
+                            </button>
+                            <button type="button" id="btnCancelCert" class="btn-cancel" style="display: none; padding: 12px 18px; border-radius: 12px; background: rgba(255,255,255,0.08); color: var(--text-sub); border: 1px solid var(--panel-border); font-weight: 600; cursor: pointer;">
+                                Cancel
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tab 2: Projects -->
+        <section id="tab-projects" class="admin-panel">
+            <div class="panel-grid">
+                <div class="glass-box">
+                    <div class="box-header">
+                        <h2>Published Projects (<span id="projectsCount">0</span>)</h2>
+                        <span style="font-size: 0.8rem; color: var(--text-sub);">data/projects.json</span>
+                    </div>
+                    <div id="projectsList" class="items-list">
+                        <div style="text-align: center; color: var(--text-sub); padding: 2rem;">Loading projects...</div>
+                    </div>
+                </div>
+
+                <div class="glass-box">
+                    <div class="box-header">
+                        <h2 id="projectFormTitle">Add New Project</h2>
+                    </div>
+                    <form id="projectForm">
+                        <input type="hidden" id="projectEditId">
+                        <div class="form-group">
+                            <label for="projectTitle">Project Title *</label>
+                            <input type="text" id="projectTitle" class="form-control" placeholder="e.g. Project Aegis-Finance" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="projectIcon">Emoji Icon</label>
+                            <input type="text" id="projectIcon" class="form-control" placeholder="🛡️" style="font-size: 1.2rem;">
+                        </div>
+                        <div class="form-group">
+                            <label for="projectDesc">Description *</label>
+                            <textarea id="projectDesc" class="form-control" placeholder="Key architecture, metrics & impact..." required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="projectTags">Tech Tags (comma separated)</label>
+                            <input type="text" id="projectTags" class="form-control" placeholder="FastAPI, Docker, AWS, MLflow">
+                        </div>
+                        <div class="form-group">
+                            <label for="projectSource">GitHub Source URL</label>
+                            <input type="url" id="projectSource" class="form-control" placeholder="https://github.com/sankeashok/...">
+                        </div>
+                        <div class="form-group">
+                            <label for="projectDemo">Live Demo URL</label>
+                            <input type="url" id="projectDemo" class="form-control" placeholder="https://...">
+                        </div>
+                        <div class="form-group">
+                            <label for="projectArticle">Article / Publication URL (Optional)</label>
+                            <input type="url" id="projectArticle" class="form-control" placeholder="https://medium.com/@sanke.ashok/...">
+                        </div>
+                        <div style="display: flex; gap: 10px;">
+                            <button type="submit" id="btnSaveProject" class="btn-submit" style="flex: 1;">
+                                <span>Publish Project</span>
+                            </button>
+                            <button type="button" id="btnCancelProject" class="btn-cancel" style="display: none; padding: 12px 18px; border-radius: 12px; background: rgba(255,255,255,0.08); color: var(--text-sub); border: 1px solid var(--panel-border); font-weight: 600; cursor: pointer;">
+                                Cancel
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tab 3: Experience -->
+        <section id="tab-experience" class="admin-panel">
+            <div class="panel-grid">
+                <div class="glass-box">
+                    <div class="box-header">
+                        <h2>Career Timeline (<span id="expCount">0</span>)</h2>
+                        <span style="font-size: 0.8rem; color: var(--text-sub);">data/experience.json</span>
+                    </div>
+                    <div id="expList" class="items-list">
+                        <div style="text-align: center; color: var(--text-sub); padding: 2rem;">Loading experience...</div>
+                    </div>
+                </div>
+
+                <div class="glass-box">
+                    <div class="box-header">
+                        <h2 id="expFormTitle">Add Work Experience</h2>
+                    </div>
+                    <form id="expForm">
+                        <input type="hidden" id="expEditId">
+                        <div class="form-group">
+                            <label for="expTitle">Role / Job Title *</label>
+                            <input type="text" id="expTitle" class="form-control" placeholder="e.g. Lead MLOps Engineer" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="expCompany">Company &amp; Division *</label>
+                            <input type="text" id="expCompany" class="form-control" placeholder="e.g. Fractal.ai | Data Science" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="expPeriod">Date Range *</label>
+                            <input type="text" id="expPeriod" class="form-control" placeholder="e.g. May 2026 – Present" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="expDesc">Summary &amp; Deliverables *</label>
+                            <textarea id="expDesc" class="form-control" placeholder="Architecture, frameworks, metrics..." required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="expTags">Key Technologies (comma separated)</label>
+                            <input type="text" id="expTags" class="form-control" placeholder="Python, Docker, AWS, Jenkins">
+                        </div>
+                        <div style="display: flex; gap: 10px;">
+                            <button type="submit" id="btnSaveExp" class="btn-submit" style="flex: 1;">
+                                <span>Publish Role</span>
+                            </button>
+                            <button type="button" id="btnCancelExp" class="btn-cancel" style="display: none; padding: 12px 18px; border-radius: 12px; background: rgba(255,255,255,0.08); color: var(--text-sub); border: 1px solid var(--panel-border); font-weight: 600; cursor: pointer;">
+                                Cancel
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tab 4: Settings & GitHub PAT -->
+        <section id="tab-settings" class="admin-panel">
+            <div class="glass-box" style="max-width: 650px; margin: 0 auto;">
+                <div class="box-header">
+                    <h2>GitHub Integration Settings</h2>
+                </div>
+                <p style="color: var(--text-sub); font-size: 0.88rem; margin-bottom: 1.5rem; line-height: 1.6;">
+                    The Admin Portal publishes directly to your GitHub repository (<code style="color: var(--accent-blue);">sankeashok/sankeashok.github.io</code>) using GitHub's REST API. Your Personal Access Token (PAT) is stored <strong>exclusively in your browser's private local storage</strong> and never sent to any external server.
+                </p>
+                <form id="settingsForm">
+                    <div class="form-group">
+                        <label for="githubTokenInput">GitHub Personal Access Token (PAT)</label>
+                        <input type="password" id="githubTokenInput" class="form-control" placeholder="ghp_... or github_pat_..." autocomplete="off">
+                        <small style="display: block; color: var(--text-sub); margin-top: 6px; font-size: 0.78rem;">
+                            Needs <code>repo</code> or <code>contents:write</code> scope. <a href="https://github.com/settings/tokens/new?scopes=repo&description=Portfolio+Admin+Portal" target="_blank" style="color: var(--accent-blue); text-decoration: none; font-weight: 600;">Create Token on GitHub ↗</a>
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <label for="githubBranchInput">Target Branch</label>
+                        <input type="text" id="githubBranchInput" class="form-control" value="master">
+                    </div>
+                    <div style="display: flex; gap: 10px; margin-top: 1.5rem;">
+                        <button type="submit" class="btn-submit" style="flex: 1;">Save Connection</button>
+                        <button type="button" id="btnTestConnection" class="btn-view-site" style="padding: 12px 20px;">Test API</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast-banner">
+        <span id="toastIcon">✓</span>
+        <span id="toastMessage">Success</span>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

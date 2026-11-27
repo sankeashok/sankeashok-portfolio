@@ -1,0 +1,47 @@
+[
+  {
+    "id": "google-ai-cert",
+    "title": "Google AI Professional Certificate",
+    "issuer": "Coursera Specialization",
+    "url": "https://www.coursera.org/account/accomplishments/specialization/FQ5BNNSBCOG5",
+    "category": "certification",
+    "badge": "Specialization",
+    "date": "2026"
+  },
+  {
+    "id": "data-lakehouse",
+    "title": "Data Engineering to Lakehouse",
+    "issuer": "Coursera Verified",
+    "url": "https://www.coursera.org/account/accomplishments/certificate/4DARW88WC2AJ",
+    "category": "certification",
+    "badge": "Verified",
+    "date": "2026"
+  },
+  {
+    "id": "ai-fundamentals",
+    "title": "AI Fundamentals",
+    "issuer": "Coursera Verified",
+    "url": "https://www.coursera.org/account/accomplishments/verify/2HABAXUB5T6G",
+    "category": "certification",
+    "badge": "Verified",
+    "date": "2026"
+  },
+  {
+    "id": "ever-ready-award",
+    "title": "Ever Ready Award",
+    "issuer": "Oracle Financial Services",
+    "url": "",
+    "category": "award",
+    "badge": "Honors",
+    "date": "2020"
+  },
+  {
+    "id": "sustainability-champion",
+    "title": "Sustainability Champion",
+    "issuer": "Oracle Green Warrior",
+    "url": "",
+    "category": "award",
+    "badge": "Honors",
+    "date": "2020"
+  }
+]

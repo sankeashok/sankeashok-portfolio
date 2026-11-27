@@ -1,0 +1,74 @@
+[
+  {
+    "id": "fractal-ai",
+    "title": "MLOps Engineer",
+    "company": "Fractal.ai | Data Science & AI",
+    "period": "May 2026 \u2013 Present",
+    "highlighted": true,
+    "description": "Designing and maintaining high-performance inference gateways for real-time analytics with sub-50ms latency. Implementing MLOps observability stacks using MLflow, Prometheus, and Grafana for drift detection, with CI/CD on AWS (ECR, ECS Fargate).",
+    "tags": [
+      "Python",
+      "MLflow",
+      "FastAPI",
+      "Docker",
+      "AWS Fargate",
+      "GitHub Actions"
+    ]
+  },
+  {
+    "id": "luxoft",
+    "title": "Senior Test Engineer",
+    "company": "Luxoft",
+    "period": "Dec 2022 \u2013 May 2026",
+    "highlighted": false,
+    "description": "Led EDI modernization project transforming legacy mainframe to modern AWS cloud infrastructure. Automated 150+ test cases using VirtuosoQA for UI/API testing with AWS SQS/DynamoDB validations and Murex MXtest frameworks.",
+    "tags": [
+      "AWS SQS",
+      "DynamoDB",
+      "VirtuosoQA",
+      "Murex MXtest"
+    ]
+  },
+  {
+    "id": "fis-global",
+    "title": "Lead Engineer",
+    "company": "FIS Global",
+    "period": "Sep 2021 \u2013 Dec 2022",
+    "highlighted": false,
+    "description": "Led Modern Banking Platform (Core banking) implementation for Goldman Sachs and Royal Bank of Canada version upgrades. Automated 200+ test cases using Selenium with CI/CD on Bitbucket, Kafka streaming, and OpenShift.",
+    "tags": [
+      "Core Banking",
+      "Selenium",
+      "Kafka",
+      "Postman",
+      "Bitbucket CI"
+    ]
+  },
+  {
+    "id": "oracle-financial",
+    "title": "Staff Consultant",
+    "company": "Oracle Financial Services",
+    "period": "Jun 2017 \u2013 Sep 2021",
+    "highlighted": false,
+    "description": "Worked on Oracle Flexcube Core Banking upgrade projects and UBS initiatives. Automated 200+ test suites via Selenium & Jenkins CI pipeline for CASA, TD, Loans, and Payments modules.",
+    "tags": [
+      "Oracle Flexcube",
+      "Jenkins CI",
+      "Selenium",
+      "PL/SQL"
+    ]
+  },
+  {
+    "id": "ntt-data",
+    "title": "Test Engineer & Consultant",
+    "company": "NTT Data & Maveric",
+    "period": "May 2013 \u2013 Jun 2017",
+    "highlighted": false,
+    "description": "Performed SIT and UAT for Citi Bank core banking modules across APAC and EMEA regions (10+ countries). Hands-on with Citibank's Eclipse Banking System (EBS) and Advanced Lending System (ALS).",
+    "tags": [
+      "Citibank EBS",
+      "UAT / SIT",
+      "Banking Workflows"
+    ]
+  }
+]

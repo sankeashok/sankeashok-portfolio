@@ -1,0 +1,86 @@
+[
+  {
+    "id": "aegis-finance",
+    "title": "Project Aegis-Finance",
+    "icon": "🛡️",
+    "className": "project-aegis",
+    "description": "Production-grade loan risk assessment with XGBoost, FastAPI, and automated MLOps monitoring. Features dual-theme React dashboard, built-in PSI drift engine, and 3-stage GitHub Actions pipeline.",
+    "tags": [
+      "FastAPI",
+      "XGBoost",
+      "Grafana"
+    ],
+    "sourceUrl": "https://github.com/sankeashok/Aegis-Finance",
+    "demoUrl": "https://aegis-finance-api-yryvmgxkoq-uc.a.run.app"
+  },
+  {
+    "id": "lifebridge",
+    "title": "LifeBridge (Google PromptWars)",
+    "icon": "🌉",
+    "className": "project-lifebridge",
+    "description": "High-performance Universal Bridge acting as an intelligent translator between unstructured human intent and structured actions. Powered by Gemini 2.5 Flash on Cloud Run.",
+    "tags": [
+      "Gemini",
+      "Cloud Run",
+      "Docker"
+    ],
+    "sourceUrl": "https://github.com/sankeashok/GooglePromptwar",
+    "demoUrl": "https://lifebridge-446421530034.us-central1.run.app"
+  },
+  {
+    "id": "vital-core",
+    "title": "Vital-Core",
+    "icon": "☀️",
+    "className": "project-vital",
+    "description": "Enterprise Healthcare & Wearable Intelligence MLOps Platform. Ingests streaming telemetry to predict risk. Features continuous autonomous retraining and LLMOps Clinical translations.",
+    "tags": [
+      "MLflow",
+      "Optuna",
+      "LLMOps"
+    ],
+    "sourceUrl": "https://github.com/sankeashok/Vital-Core",
+    "demoUrl": "https://sankeashook-vital-core.hf.space/"
+  },
+  {
+    "id": "network-anomaly",
+    "title": "Network Anomaly Detection",
+    "icon": "🛡️",
+    "className": "project-anomaly",
+    "description": "Intelligent system identifying DDoS and malware threats in real-time. Achieved 99.9% accuracy using Random Forest with detailed EDA and Hypothesis Testing.",
+    "tags": [
+      "Random Forest",
+      "Scikit-Learn",
+      "Tableau"
+    ],
+    "sourceUrl": "https://github.com/sankeashok/Anamoly-Detection",
+    "demoUrl": "https://anamaly-detection.vercel.app/",
+    "articleUrl": "https://medium.com/@sanke.ashok/securing-the-digital-perimeter-a-deep-dive-into-network-anomaly-detection-using-machine-learning-a2381023f575"
+  },
+  {
+    "id": "helios-grid",
+    "title": "Helios-grid",
+    "icon": "☁️",
+    "className": "project-helios",
+    "description": "End-to-end automated machine learning lifecycle on Microsoft Azure. Features data versioning, model registry integration, and continuous deployment workflows.",
+    "tags": [
+      "Azure",
+      "CI/CD",
+      "Pipelines"
+    ],
+    "sourceUrl": "https://github.com/sankeashok/Helios-Grid",
+    "demoUrl": "https://helios-grid.vercel.app/"
+  },
+  {
+    "id": "scaler-hackathon",
+    "title": "Scaler Hackathon",
+    "icon": "🚀",
+    "className": "project-scaler",
+    "description": "Innovative data science solution developed during the intense Scaler Hackathon, demonstrating rapid prototyping and machine learning capabilities under pressure.",
+    "tags": [
+      "Hackathon",
+      "Machine Learning"
+    ],
+    "sourceUrl": "https://github.com/sankeashok/ScaleSentry-ML-Health",
+    "demoUrl": ""
+  }
+]
